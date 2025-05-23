@@ -51,6 +51,41 @@ class TestCalculate(unittest.TestCase):
         self.assertEqual(0, self.calc.multiply(-1, 0))
         self.assertEqual(-2, self.calc.multiply(-1, 2))
 
+# nuevo 
+
+    def test_substract_method_returns_correct_result(self):
+        self.assertEqual(0, self.calc.substract(2, 2))
+        self.assertEqual(4, self.calc.substract(2, -2))
+        self.assertEqual(-4, self.calc.substract(-2, 2))
+        self.assertEqual(1, self.calc.substract(1, 0))
+
+    def test_power_method_returns_correct_result(self):
+        self.assertEqual(4, self.calc.power(2, 2))
+        self.assertEqual(1, self.calc.power(2, 0))
+        self.assertEqual(0.25, self.calc.power(2, -2))
+
+    def test_sqrt_method_returns_correct_result(self):
+        self.assertEqual(3, self.calc.sqrt(9))
+        self.assertEqual(5, self.calc.sqrt(25))
+        self.assertEqual(0, self.calc.sqrt(0))
+
+    def test_sqrt_method_fails_with_negative_or_invalid(self):
+        self.assertRaises(TypeError, self.calc.sqrt, -1)
+        self.assertRaises(TypeError, self.calc.sqrt, "9")
+        self.assertRaises(TypeError, self.calc.sqrt, None)
+
+    def test_log10_method_returns_correct_result(self):
+        self.assertEqual(1, self.calc.log10(10))
+        self.assertEqual(2, self.calc.log10(100))
+        self.assertAlmostEqual(0, self.calc.log10(1))
+
+    def test_log10_method_fails_with_zero_or_negative_or_invalid(self):
+        self.assertRaises(TypeError, self.calc.log10, 0)
+        self.assertRaises(TypeError, self.calc.log10, -10)
+        self.assertRaises(TypeError, self.calc.log10, "10")
+        self.assertRaises(TypeError, self.calc.log10, None)
+
+
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()
